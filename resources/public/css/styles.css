@@ -1,0 +1,45 @@
+body {
+  margin-left: auto;
+  margin-right: auto;
+  width: 750px;
+  color: #8d8d8d;
+}
+div.heading {
+  background:url('images/heading.png') left top no-repeat;
+  height: 250px;
+}
+div.topcontent {
+  /*margin-left: auto;
+  margin-right: auto;*/
+}
+div.register {
+  border: solid 5px #8d8d8d;
+  position:absolute;
+  left:36%;
+  margin:-100px 0 0 -190px;
+  padding: 5px;
+  top: 30%;
+  text-align: left;
+}
+a{
+  color: #8d8d8d;
+}
+a:hover {
+  color: #6d6d6d;
+}
+a:visited {
+  color: #3d3d3d;
+}
+input, textarea, select {
+  color: #8d8d8d;
+  border: solid 2px #8d8d8d;
+  display: inline-block;
+  outline: none;
+  border-radius: 4px;
+}
+div.register {
+  background-color: #fff;
+}
+input#exit {
+  float: right;
+}

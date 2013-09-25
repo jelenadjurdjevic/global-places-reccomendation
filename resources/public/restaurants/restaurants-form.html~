@@ -1,0 +1,42 @@
+<table>
+  <tr>
+    <td>Food</td>
+    <td>
+      <select>
+	<option class="food-option"></option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>Prices</td>
+    <td>
+      <select>
+	<option value="1">$15</option>
+	<option value="2">$15-30</option>
+	<option value="3">$30-50</option>
+	<option value="4">$50-75</option>
+	<option value="5">$75+</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="checkbox" name="kids-menu" value="1" ></input>
+    </td>
+    <td>Kids menu</td>
+  </tr>
+  <tr>
+    <td>
+      <input type="checkbox" name="wifi" value="1" ></input>
+    </td>
+    <td>WiFi</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input type="button" value="Search" id="search" ></input></td>
+  </tr>
+  <tr>
+    <td class="results"></td>
+    <td class="suggest"></td>
+  </tr>
+</table>

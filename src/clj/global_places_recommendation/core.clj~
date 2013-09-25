@@ -1,0 +1,13 @@
+(ns global-places-recommendation.core
+  (:require [factual.api :as fact]))
+
+(fact/factual! "dLdrD1DFyqEErPNYCWL6fUDfjOYRX91QGwidQHan" "4xzqiH0N87cgT1iMxG9MDdc1txGqkTovYVK1jxq4")
+
+(defn findtable
+  "Find"
+  []
+  (println (fact/fetch {:table
+			:places
+			:filters {:name "Stand"}
+			:geo {:$circle {:$center [34.06018, -118.41835]
+					:$meters 5000}}})))
