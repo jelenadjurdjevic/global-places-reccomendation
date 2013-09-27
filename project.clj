@@ -21,7 +21,7 @@
 		 [xml-apis/xml-apis "1.4.01"]
 		 [clj-webdriver "0.6.0"]
 		 [factual/factual-clojure-driver "1.5.1"]]
-
+  :plugins [[lein2-eclipse "2.0.0"]]
 
   :main global-places-recommendation.repl
 

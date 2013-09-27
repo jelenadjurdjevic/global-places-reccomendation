@@ -3,7 +3,7 @@
 	    [global-places-recommendation.neo4j :as n4j]
 	    [net.cgrand.enlive-html :as en]))
 
-
+;Build page to create grocery in database
 (en/deftemplate restaurants-form
   (hg/build-html-page [{:temp-sel [:div.maincontent],
 			:comp "public/restaurants/restaurants-form.html",
