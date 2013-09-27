@@ -2,8 +2,8 @@
   (:require [domina :as dom]
 	    [domina.events :as evts]
 	    [domina.css :as domcss]
-            [global-places-recommendation.login.login-validators :refer [login-credential-errors]]))
-
+            [global-places-recommendation.login.login-validators :refer [login-credential-errors
+                   create-user-errors]]))
 (defn prepend-errors
   "Prepend error"
   [errors]
@@ -21,6 +21,33 @@
 	    (prepend-errors (:password errors))
 	    false)
 	true)))
+
+	(defn validate-regiser-form
+  "Validate form"
+  []
+  (do (dom/destroy! (dom/by-class "help"))
+  (if-let [errors (create-user-errors {:name (dom/value (dom/by-id "name"))
+          :surname (dom/value (dom/by-id "surname"))
+          :email (dom/value (dom/by-id "email"))
+          :username (dom/value (dom/by-id "username-reg"))
+          :password (dom/value (dom/by-id "password-reg"))
+          :age (dom/value (dom/by-id "age"))
+          :city (dom/value (dom/by-id "city"))
+          :country (dom/value (dom/by-id "country"))
+          :gender (if (= (first (dom/nodes (domcss/sel "input[name='gender']:checked"))) nil)
+               ""
+                (dom/value (dom/nodes (domcss/sel "input[name='gender']:checked"))))})]
+  (do (prepend-errors (:name errors))
+      (prepend-errors (:surname errors))
+      (prepend-errors (:email errors))
+      (prepend-errors (:username-reg errors))
+      (prepend-errors (:password-reg errors))
+      (prepend-errors (:age errors))
+      (prepend-errors (:city errors))
+      (prepend-errors (:country errors))
+      (prepend-errors (:gender errors))
+      false)
+  true)))
 
 (defn onready
   "Swap updated content from response with current"
@@ -73,7 +100,8 @@
 		      (fn [] (hide-register-pop-up)))
 	(evts/listen! (dom/by-id "register-btn")
 		      :click
-		      (fn [] (do (hide-register-pop-up)
-				 (js/alert (dom/nodes (domcss/sel "input[name='gender']:checked")))
-				 (save-user))))
+		      fn [] (do (hide-register-pop-up)
+				 ( (if (validate-regiser-form)
+            (save-user))
+         )))
 )))

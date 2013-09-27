@@ -65,16 +65,20 @@
     (doseq [[id
 	     name
 	     surname
+		 email
+         username
 	     age
 	     city
 	     country
 	     gender]
-	    (:data (n4j/cypher-query (str "start n=node("(clojure.string/join ","(n4j/get-type-indexes "organism"))")
+	    (:data (n4j/cypher-query (str "start n=node("(clojure.string/join ","(n4j/get-type-indexes "user"))")
 					   where n.username? = \""username"\" and
 						 n.password? = \""password"\"
 					   return ID(n),
 						  n.name,
 						  n.surname,
+						  n.email,
+						  n.username,
 						  n.age,
 						  n.city,
 						  n.country,
@@ -91,7 +95,7 @@
 (defn is-logged-in
   "Checks if user is logged in"
   [response-fn]
-  (if (= (session-get :organism-id) nil)
+  (if (= (session-get :id) nil)
       (lv/login)
       (do (session-pop! :login-try 1)
 	  response-fn)))
@@ -99,6 +103,6 @@
 (defn is-not-logged-in
   "Checks if user is logged in"
   [response-fn]
-  (if (= (session-get :organism-id) nil)
+  (if (= (session-get :id) nil)
       response-fn
       (lv/home)))

@@ -29615,8 +29615,9 @@ global_places_recommendation.login.login_validators.login_credential_errors = fu
 };
 global_places_recommendation.login.login_validators.create_user_errors = function create_user_errors(params) {
   return valip.core.validate.call(null, params, cljs.core.PersistentVector.fromArray(["\ufdd0:name", valip.predicates.present_QMARK_, "Name can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:surname", valip.predicates.present_QMARK_, "Surname can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:email", valip.predicates.present_QMARK_, "Email can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:email", valip.predicates.email_address_QMARK_, 
-  "Email not in valid format."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:password", valip.predicates.present_QMARK_, "Password can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:age", valip.predicates.present_QMARK_, "Age can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:city", valip.predicates.present_QMARK_, "City can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:country", valip.predicates.present_QMARK_, "Country can't be empty."], 
-  true), cljs.core.PersistentVector.fromArray(["\ufdd0:gender", valip.predicates.present_QMARK_, "Gender can't be empty."], true))
+  "Email not in valid format."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:username", valip.predicates.present_QMARK_, "Username can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:password", valip.predicates.present_QMARK_, "Password can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:age", valip.predicates.present_QMARK_, "Age can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:city", valip.predicates.present_QMARK_, "City can't be empty."], 
+  true), cljs.core.PersistentVector.fromArray(["\ufdd0:country", valip.predicates.present_QMARK_, "Country can't be empty."], true), cljs.core.PersistentVector.fromArray(["\ufdd0:gender", valip.predicates.present_QMARK_, "Gender can't be empty."], true))
+ };
 };
 goog.provide("goog.functions");
 goog.functions.constant = function(retValue) {
@@ -30646,6 +30647,27 @@ global_places_recommendation.login.jslogin.validate_form = function validate_for
     return true
   }
 };
+global_places_recommendation.login.jslogin.validate_regiser_form = function validate_regiser_form() {
+  domina.destroy_BANG_.call(null, domina.by_class.call(null, "help"));
+  var temp__4090__auto__ = global_places_recommendation.login.login_validators.create_user_errors.call(null, cljs.core.PersistentHashMap.fromArrays(["\ufdd0:age", "\ufdd0:country", "\ufdd0:gender", "\ufdd0:name", "\ufdd0:surname", "\ufdd0:city", "\ufdd0:username", "\ufdd0:email", "\ufdd0:password"], [domina.value.call(null, domina.by_id.call(null, "age")), domina.value.call(null, domina.by_id.call(null, "country")), cljs.core._EQ_.call(null, cljs.core.first.call(null, domina.nodes.call(null, domina.css.sel.call(null, 
+  "input[name='gender']:checked"))), null) ? "" : domina.value.call(null, domina.nodes.call(null, domina.css.sel.call(null, "input[name='gender']:checked"))), domina.value.call(null, domina.by_id.call(null, "name")), domina.value.call(null, domina.by_id.call(null, "surname")), domina.value.call(null, domina.by_id.call(null, "city")), domina.value.call(null, domina.by_id.call(null, "username-reg")), domina.value.call(null, domina.by_id.call(null, "email")), domina.value.call(null, domina.by_id.call(null, 
+  "password-reg"))]));
+  if(cljs.core.truth_(temp__4090__auto__)) {
+    var errors = temp__4090__auto__;
+    global_places_recommendation.login.jslogin.prepend_errors.call(null, (new cljs.core.Keyword("\ufdd0:name")).call(null, errors));
+    global_places_recommendation.login.jslogin.prepend_errors.call(null, (new cljs.core.Keyword("\ufdd0:surname")).call(null, errors));
+    global_places_recommendation.login.jslogin.prepend_errors.call(null, (new cljs.core.Keyword("\ufdd0:email")).call(null, errors));
+    global_places_recommendation.login.jslogin.prepend_errors.call(null, (new cljs.core.Keyword("\ufdd0:username")).call(null, errors));
+    global_places_recommendation.login.jslogin.prepend_errors.call(null, (new cljs.core.Keyword("\ufdd0:password")).call(null, errors));
+    global_places_recommendation.login.jslogin.prepend_errors.call(null, (new cljs.core.Keyword("\ufdd0:age")).call(null, errors));
+    global_places_recommendation.login.jslogin.prepend_errors.call(null, (new cljs.core.Keyword("\ufdd0:city")).call(null, errors));
+    global_places_recommendation.login.jslogin.prepend_errors.call(null, (new cljs.core.Keyword("\ufdd0:country")).call(null, errors));
+    global_places_recommendation.login.jslogin.prepend_errors.call(null, (new cljs.core.Keyword("\ufdd0:gender")).call(null, errors));
+    return false
+  }else {
+    return true
+  }
+};
 global_places_recommendation.login.jslogin.onready = function onready(content) {
   if(function() {
     var and__3941__auto__ = cljs.core._EQ_.call(null, content["currentTarget"]["readyState"], 4);
@@ -30664,8 +30686,9 @@ global_places_recommendation.login.jslogin.onready = function onready(content) {
 global_places_recommendation.login.jslogin.save_user = function save_user() {
   var xmlhttp = new XMLHttpRequest;
   xmlhttp["onreadystatechange"] = global_places_recommendation.login.jslogin.onready;
-  xmlhttp.open("PUT", [cljs.core.str("/save-user?name="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "name"))), cljs.core.str("&surname="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "surname"))), cljs.core.str("&email="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "email"))), cljs.core.str("&username="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "username"))), cljs.core.str("&password="), cljs.core.str(domina.value.call(null, 
-  domina.by_id.call(null, "password"))), cljs.core.str("&age="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "age"))), cljs.core.str("&city="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "city"))), cljs.core.str("&country="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "country")))].join(""), true);
+  xmlhttp.open("PUT", [cljs.core.str("/save-user?name="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "name"))), cljs.core.str("&surname="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "surname"))), cljs.core.str("&email="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "email"))), cljs.core.str("&username="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "username-reg"))), cljs.core.str("&password="), cljs.core.str(domina.value.call(null, 
+  domina.by_id.call(null, "password-reg"))), cljs.core.str("&age="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "age"))), cljs.core.str("&city="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "city"))), cljs.core.str("&country="), cljs.core.str(domina.value.call(null, domina.by_id.call(null, "country"))), cljs.core.str("&gender="), cljs.core.str(domina.value.call(null, domina.nodes.call(null, domina.css.sel.call(null, "input[name='gender']:checked"))))].join(""), 
+  true);
   return xmlhttp.send()
 };
 global_places_recommendation.login.jslogin.hide_register_pop_up = function hide_register_pop_up() {
@@ -30700,8 +30723,11 @@ global_places_recommendation.login.jslogin.init = function init() {
     });
     return domina.events.listen_BANG_.call(null, domina.by_id.call(null, "register-btn"), "\ufdd0:click", function() {
       global_places_recommendation.login.jslogin.hide_register_pop_up.call(null);
-      alert(domina.nodes.call(null, domina.css.sel.call(null, "input[name='gender']:checked")));
-      return global_places_recommendation.login.jslogin.save_user.call(null)
+      if(cljs.core.truth_(global_places_recommendation.login.jslogin.validate_regiser_form.call(null))) {
+        return global_places_recommendation.login.jslogin.save_user.call(null)
+      }else {
+        return null
+      }
     })
   }else {
     return null

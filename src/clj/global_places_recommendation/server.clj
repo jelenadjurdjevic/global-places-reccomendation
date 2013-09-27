@@ -31,7 +31,8 @@
 	(lc/is-logged-in (lv/home))))
   (PUT "/save-user"
     request
-    (println request))
+ (do (session-pop! :login-try 1)
+ (lc/is-not-logged-in (lc/save-user (:params request)))))
   (POST "/login"
     request
     (do (lc/authenticate-user (:params request))

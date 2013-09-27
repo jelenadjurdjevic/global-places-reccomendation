@@ -14,6 +14,8 @@
 (defn get-indexes-node-type-of
   "Get node with indexes of particular type"
   [index-type]
+  (if (= (nn/all-indexes) [])
+      (nn/create-index "indexesoftypes"))
   (first (nn/query "indexesoftypes" (str "type:"index-type))))
 
 (defn vector-of-indexes
