@@ -12,15 +12,6 @@
 
 (fact/factual! "dLdrD1DFyqEErPNYCWL6fUDfjOYRX91QGwidQHan" "4xzqiH0N87cgT1iMxG9MDdc1txGqkTovYVK1jxq4")
 
-(defn findtable
-  "Find"
-  []
-  (fact/fetch {:table
-		:places
-		:filters {"region" "CA"}
-		:geo {:$circle {:$center [34.06018, -118.41835]
-				:$meters 5000}}}))
-
 (defn selenium-test
   "Selenium"
   []

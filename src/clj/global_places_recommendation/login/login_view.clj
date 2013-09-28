@@ -3,7 +3,8 @@
   (:require [global-places-recommendation.neo4j :as n4j]
 	    [global-places-recommendation.html-generator :as hg]
 	    [net.cgrand.enlive-html :as en]
-	    [global-places-recommendation.utils :refer [nodes-data-to-map]]))
+	    [global-places-recommendation.utils :refer [nodes-data-to-map]]
+        [global-places-recommendation.factual :as gpr-fact]))
 
 (en/deftemplate login
   (hg/build-html-page [{:temp-sel [:div.topcontent],
@@ -34,7 +35,15 @@
 			:comp "public/login/home.html",
 			:comp-sel [:div.home]}])
   []
-  [:title] (en/content "Welcome"))
+  [:title] (en/content "Welcome")
+   [:option.city] (en/clone-for [locality (gpr-fact/fetch-localities-of-region "al")]
+        [:option.city] (comp (en/content (get locality "locality"))
+                 (en/set-attr :value (get locality "locality"))
+                 (en/remove-attr :class)))
+  [:tr.result-item] (en/clone-for [result (gpr-fact/fetch-locality-of-type :restaurants-us "Hoover")]
+          [:td] (en/content {:tag :a,
+                 :attrs {:href (get result "website")},
+                 :content (get result "website")})))
 
 (en/deftemplate page-not-found
   (hg/build-html-page [{:temp-sel [:div.topcontent],
