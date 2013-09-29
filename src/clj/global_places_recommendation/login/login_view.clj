@@ -43,7 +43,13 @@
   [:tr.result-item] (en/clone-for [result (gpr-fact/fetch-locality-of-type :restaurants-us "Hoover")]
           [:td] (en/content {:tag :a,
                  :attrs {:href (get result "website")},
-                 :content (get result "website")})))
+				     :content (get result "website")}))
+  [:div.script] (en/content {:tag :script,
+			     :attrs {:src "http://localhost:3000/js/login.js"},
+			     :content nil})
+  [:div.script] (en/append {:tag :script,
+			    :attrs nil,
+			    :content "global_places_recommendation.login.jslogin_home.init();"}))
 
 (en/deftemplate page-not-found
   (hg/build-html-page [{:temp-sel [:div.topcontent],
@@ -59,3 +65,11 @@
 				     :content [{:tag :a,
 						:attrs {:href "/login"},
 						:content "back"}]}))
+						
+(en/deftemplate localities
+  (en/html-resource "public/login/city-select.html")
+  [country]
+  [:option.city] (en/clone-for [locality (gpr-fact/fetch-localities-of-region country)]
+				[:option.city] (comp (en/content (get locality "locality"))
+						     (en/set-attr :value (get locality "locality"))
+						     (en/remove-attr :class))))
