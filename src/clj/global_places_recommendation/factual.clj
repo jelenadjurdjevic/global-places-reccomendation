@@ -30,3 +30,22 @@
                        "price" {:$eq price}
                        "kids_menu" {:$eq kids-menu}
                        "wifi" {:$eq wifi}} :limit 5})))
+					   
+(defn recommend-hotels
+  ""
+  [stars
+   lprice
+   hprice
+   spa
+   pets
+   wifi
+   parking]
+  (remove #(= (get % "website") nil) (fact/fetch {:table
+						  :hotels-us
+						  :filters {"stars" {:$eq stars}
+							    "lowest_price" {:$gte lprice}
+							    "highest_price" {:$lte hprice}
+							    "parking" {:$eq parking}
+							    "pets" {:$eq pets}
+							    "internet" {:$eq wifi}
+							    "spa_services" {:$eq spa}} :limit 5})))

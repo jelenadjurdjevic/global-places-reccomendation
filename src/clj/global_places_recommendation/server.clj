@@ -9,6 +9,7 @@
 	    [global-places-recommendation.login.login-view :as lv]
 	    [global-places-recommendation.login.login-controller :as lc]
 	    [global-places-recommendation.restaurants.restaurants-view :as rv]
+		[global-places-recommendation.hotels.hotels-view :as hv]
 	    [ring.adapter.jetty :as jetty]))
 
 ;; defroutes macro defines a function that chains individual route
@@ -22,6 +23,12 @@
   (POST "/search-restaurants"
     request
     (lc/is-logged-in (rv/restaurants-result (:params request))))
+   (GET "/hotels"
+    []
+    (lc/is-logged-in (hv/hotels-form)))
+  (POST "/search-hotels"
+    request
+    (lc/is-logged-in (hv/hotels-result (:params request))))
   (POST "/change-country"
     request
     (lc/is-logged-in (lv/localities (:country (:params request)))))

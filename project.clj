@@ -91,5 +91,29 @@
 		  :compiler {;; CLS generated JS script filename
 			     :output-to "resources/public/js/restaurants.js"
 
-			     ;; minimal JS optimization directive
-			     :optimizations :advanced}}}})
+			       ;; minimal JS optimization directive
+					:optimizations :advanced}}
+		:dev-hotels
+		{;; CLJS source code path
+			:source-paths ["src/brepl"
+			"src/cljs/global_places_recommendation/hotels"]
+
+		;; Google Closure (CLS) options configuration
+		:compiler {;; CLS generated JS script filename
+           :output-to "resources/public/js/hotels.js"
+
+           ;; minimal JS optimization directive
+           :optimizations :whitespace
+
+           ;; generated JS code prettyfication
+           :pretty-print true}}
+		:prod-hotels
+		{;; CLJS source code path
+		:source-paths ["src/cljs/global_places_recommendation/hotels"]
+
+		;; Google Closure (CLS) options configuration
+		:compiler {;; CLS generated JS script filename
+           :output-to "resources/public/js/hotels.js"
+
+           ;; minimal JS optimization directive
+           :optimizations :advanced}}}})
