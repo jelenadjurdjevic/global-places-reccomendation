@@ -19,9 +19,15 @@
   (GET "/restaurants"
     []
     (lc/is-logged-in (rv/restaurants-form)))
+  (POST "/search-restaurants"
+    request
+    (lc/is-logged-in (rv/restaurants-result (:params request))))
   (POST "/change-country"
     request
     (lc/is-logged-in (lv/localities (:country (:params request)))))
+  (POST "/change-city"
+    request
+    (lc/is-logged-in (lv/locality-recommend (:city (:params request)))))
   (GET "/home"
     []
     (lc/is-logged-in (lv/home)))

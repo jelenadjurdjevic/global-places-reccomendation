@@ -43,3 +43,12 @@ div.register {
 input#exit {
   float: right;
 }
+div.navigation table td{
+  border: 1px solid;
+}
+div.navigation a{
+  text-decoration: none;
+}
+div.navigation table td:hover{
+  background-color: #ccc;
+}

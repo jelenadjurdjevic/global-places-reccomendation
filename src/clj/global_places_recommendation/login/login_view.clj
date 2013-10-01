@@ -73,3 +73,11 @@
 				[:option.city] (comp (en/content (get locality "locality"))
 						     (en/set-attr :value (get locality "locality"))
 						     (en/remove-attr :class))))
+		
+(en/deftemplate locality-recommend
+  (en/html-resource "public/login/city-recommend.html")
+  [city]
+  [:tr.result-item] (en/clone-for [result (gpr-fact/fetch-locality-of-type :restaurants-us city)]
+          [:td] (en/content {:tag :a,
+                 :attrs {:href (get result "website")},
+                 :content (get result "website")})))

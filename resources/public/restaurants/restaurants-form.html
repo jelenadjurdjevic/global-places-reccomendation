@@ -5,9 +5,9 @@
       <input id="food-organic"
 	     type="checkbox" />
       <label for="food-organic">organic</label>
-      <input id="food-vegeterian"
+      <input id="food-vegetarian"
 	     type="checkbox" />
-      <label for="food-vegeterian">vegeterian</label>
+      <label for="food-vegetarian">vegetarian</label>
       <input id="food-gluten-free"
 	     type="checkbox" />
       <label for="food-gluten-free">gluten-free</label>
@@ -16,7 +16,7 @@
   <tr>
     <td>Prices</td>
     <td>
-      <select>
+      <select id="price">
 	<option value="1">$15</option>
 	<option value="2">$15-30</option>
 	<option value="3">$30-50</option>
@@ -27,13 +27,15 @@
   </tr>
   <tr>
     <td>
-      <input type="checkbox" name="kids-menu" value="1" ></input>
+     <input type="checkbox"
+       id="kids-menu" ></input>
     </td>
     <td>Kids menu</td>
   </tr>
   <tr>
     <td>
-      <input type="checkbox" name="wifi" value="1" ></input>
+      <input type="checkbox"
+       id="wifi" ></input>
     </td>
     <td>WiFi</td>
   </tr>
@@ -42,7 +44,6 @@
     <td><input type="button" value="Search" id="search" ></input></td>
   </tr>
   <tr>
-    <td class="results"></td>
-    <td class="suggest"></td>
+   <td colspan="2" class="search-results"></td>
   </tr>
 </table>

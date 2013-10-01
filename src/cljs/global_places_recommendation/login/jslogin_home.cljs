@@ -29,9 +29,10 @@
   [content]
   (if (and (= (aget (aget content "currentTarget") "readyState") 4)
 	   (= (aget (aget content "currentTarget") "status") 200))
-      (do (dom/destroy! (dom/by-class "help"))
-	  (dom/append! (dom/by-id "error-msgs")
-		       (str "<div class=\"help\">"(aget (aget content "currentTarget") "responseText")"</div>")))
+      (if (not (= (aget (aget content "currentTarget") "responseText") ""))
+    (dom/swap-content! (dom/by-class "results")
+       (aget (aget content "currentTarget") "responseText"))
+  )
 ))
 
 (defn change-city
@@ -50,7 +51,7 @@
     (do (evts/listen! (dom/by-id "country")
 		      :change
 		      (fn [] (change-country)))
-;	(evts/listen! (dom/by-id "city")
-;		      :change
-;		      (fn [] (hide-register-pop-up)))
+	(evts/listen! (dom/by-id "city")
+          :change
+          (fn [] (change-city)))
 )))

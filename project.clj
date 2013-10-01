@@ -75,7 +75,7 @@
 
 		  ;; Google Closure (CLS) options configuration
 		  :compiler {;; CLS generated JS script filename
-			     :output-to "resources/public/js/login.js"
+			     :output-to "resources/public/js/restaurants.js"
 
 			     ;; minimal JS optimization directive
 			     :optimizations :whitespace
@@ -89,7 +89,7 @@
 
 		  ;; Google Closure (CLS) options configuration
 		  :compiler {;; CLS generated JS script filename
-			     :output-to "resources/public/js/login.js"
+			     :output-to "resources/public/js/restaurants.js"
 
 			     ;; minimal JS optimization directive
 			     :optimizations :advanced}}}})
