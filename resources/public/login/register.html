@@ -1,36 +1,59 @@
-<div class="register">
+<div class="edit-user">
+<form id="register-form"
+      method="POST"
+      action="/update-user">
   <table>
+   <tr>
+      <td></td>
+      <td><a href="/delete-user">Delete account</a></td>
+    </tr>
     <tr>
       <td>name</td>
-      <td><input type="text" name="name"></td>
+      <td><input type="text"
+		 name="name"
+		 id="name"></td>
     </tr>
     <tr>
       <td>surname</td>
-      <td><input type="text" name="surname"></td>
+     <td><input type="text"
+		 name="surname"
+		 id="surname"></td>
     </tr>
     <tr>
       <td>email</td>
-      <td><input type="text" name="email"></td>
+      <td><input type="text"
+		 name="email"
+		 id="email"></td>
     </tr>
     <tr>
       <td>username</td>
-      <td><input type="text" name="username"></td>
+      <td><input type="text"
+		 name="username"
+		 id="username"></td>
     </tr>
     <tr>
       <td>password</td>
-      <td><input type="text" name="password"></td>
+      <td><input type="password"
+		 name="password"
+		 id="password"></td>
     </tr>
     <tr>
       <td>age</td>
-      <td><input type="text" name="age"></td>
+      <td><input type="text"
+		 name="age"
+		 id="age"></td>
     </tr>
     <tr>
       <td>city</td>
-      <td><input type="text" name="city"></td>
+      <td><input type="text"
+		 name="city"
+		 id="city"></td>
     </tr>
     <tr>
       <td>country</td>
-      <td><input type="text" name="country"></td>
+      <td><input type="text"
+		 name="country"
+		 id="country"></td>
     </tr>
     <tr>
       <td>gender</td>
@@ -39,17 +62,17 @@
 		    name="gender"
 		    id="gender-male"
 		    value="Male" required>
-	     <label for="gender-male"><span></span>male</label></div>
+	     <label for="gender-male">male</label></div>
 	<div><input type="radio"
 		    name="gender"
 		    id="gender-female"
 		    value="Female" required>
-	     <label for="gender-female"><span></span>female</label></div>
+	     <label for="gender-female">female</label></div>
       </td>
     </tr>
     <tr>
       <td></td>
-      <td><input type="button" id="register" value="register"></td>
+      <td><input type="submit" id="register" value="update"></td>
     </tr>
   </table>
 </div>

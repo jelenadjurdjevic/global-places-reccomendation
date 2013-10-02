@@ -81,3 +81,30 @@
           [:td] (en/content {:tag :a,
                  :attrs {:href (get result "website")},
                  :content (get result "website")})))
+				 
+(en/deftemplate edit-user
+  (hg/build-html-page [{:temp-sel [:div.maincontent],
+			:comp "public/login/register.html",
+			:comp-sel [:div.edit-user]}])
+  [node]
+  [:title] (en/content "Edit user")
+  [:input#name] (en/set-attr :value (:name (:data node)))
+  [:input#surname] (en/set-attr :value (:surname (:data node)))
+  [:input#email] (en/set-attr :value (:email (:data node)))
+  [:input#username] (en/set-attr :value (:username (:data node)))
+  [:input#password] (en/set-attr :value (:password (:data node)))
+  [:input#age] (en/set-attr :value (:age (:data node)))
+  [:input#city] (en/set-attr :value (:city (:data node)))
+  [:input#country] (en/set-attr :value (:country (:data node)))
+  [:input#gender-male] (if (= (:gender (:data node)) "Male")
+			  (en/set-attr :checked "checked")
+			  (en/set-attr :name "gender"))
+  [:input#gender-female] (if (= (:gender (:data node)) "Female")
+			    (en/set-attr :checked "checked")
+			    (en/set-attr :name "gender"))
+  [:div.script] (en/content {:tag :script,
+			     :attrs {:src "http://localhost:3000/js/login.js"},
+			     :content nil})
+  [:div.script] (en/append {:tag :script,
+			    :attrs nil,
+			    :content "global_places_recommendation.login.jslogin_edit.init();"}))

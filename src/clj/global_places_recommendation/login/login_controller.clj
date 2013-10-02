@@ -40,7 +40,7 @@
 					    :country (:country req-params)
 					    :gender (:gender req-params)})]
     (println (str "user errors: " user-errors))
-    (let [node (n4j/read-node (read-string (:iduser req-params)))]
+    (let [node (n4j/read-node (session-get :id))]
       (n4j/update-node node
 		       {:name (:name req-params)
 			:surname (:surname req-params)

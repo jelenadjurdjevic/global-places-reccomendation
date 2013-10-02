@@ -10,6 +10,7 @@
 	    [global-places-recommendation.login.login-controller :as lc]
 	    [global-places-recommendation.restaurants.restaurants-view :as rv]
 		[global-places-recommendation.hotels.hotels-view :as hv]
+		[global-places-recommendation.neo4j :as n4j]
 	    [ring.adapter.jetty :as jetty]))
 
 ;; defroutes macro defines a function that chains individual route
@@ -49,6 +50,18 @@
     request
  (do (session-pop! :login-try 1)
  (lc/is-not-logged-in (lc/save-user (:params request)))))
+  (GET "/delete-user"
+    []
+    (do (lc/is-logged-in (lc/delete-user (read-string (str (session-get :id)))))
+	(destroy-session!)
+	(lc/is-logged-in (lv/home))))
+  (GET "/edit-user"
+    []
+    (lc/is-logged-in (lv/edit-user (n4j/read-node (session-get :id)))))
+  (POST "/update-user"
+    request
+    (lc/is-logged-in (do (lc/update-user (:params request))
+			 (lc/is-logged-in (lv/home)))))
   (POST "/login"
     request
     (do (lc/authenticate-user (:params request))
