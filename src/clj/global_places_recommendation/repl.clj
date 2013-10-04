@@ -17,9 +17,7 @@
   "Start the development server and open the host application in the
   default browser."
   []
-  (if (= (str (:out (sh "neo4j-community/bin/neo4j" "status"))) "Neo4j Server is not running\n")
-      (println (:out (sh "neo4j-community/bin/neo4j" "start")))
-  )
+
   (n4j/connect-neo4j)
   (dosync (ref-set server (server/run-server)))
   (future (Thread/sleep 3000)
