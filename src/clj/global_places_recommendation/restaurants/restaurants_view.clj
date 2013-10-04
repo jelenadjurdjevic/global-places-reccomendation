@@ -23,7 +23,19 @@
   [:div.script] (en/append {:tag :script,
 			    :attrs nil,
 			    :content "global_places_recommendation.restaurants.jsrestaurants.init();"}))
+(def ite 0)
 
+(en/defsnippet suggest-hotels
+  (en/html-resource "public/restaurants/restaurants-table.html")
+  [:table.results]
+  [lat
+   lon]
+  [:table.results] (en/set-attr :style "display:none" :class (str "suggest" ite))
+  [:tr.result-item] (en/clone-for [result (gpr-fact/suggest-hotels lat lon)]
+			[:td] (en/content {:tag :a,
+					   :attrs {:href (get result "website")},
+					   :content (get result "website")})))
+				
 (en/deftemplate restaurants-result
   (en/html-resource "public/restaurants/restaurants-table.html")
   [req-params]
@@ -33,7 +45,18 @@
                     (:price req-params)
                     (:kids-menu req-params)
                     (:wifi req-params))]
-          [:td] (en/content {:tag :a,
-                 :attrs {:href (get result "website")},
-                 :content (get result "website")}))
+          [:td] (en/content {:tag :div,
+                 :attrs nil,
+                 :content [{:tag :a,
+                :attrs {:href (get result "website")},
+                :content (get result "website")}
+                     {:tag :input,
+                :attrs {:type "button"
+                  :value "suggest hotels"
+                  :id (str "suggest" (do (def ite (+ ite 1))
+                        ite))}
+                :content nil}
+                     (first (suggest-hotels (get result "latitude")
+                         (get result "longitude")))]}
+))
 )

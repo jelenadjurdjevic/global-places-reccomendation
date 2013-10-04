@@ -7,15 +7,9 @@
   (:require [clojure.java.browse :as browse]
 	    [global-places-recommendation.server :as server]
 	    [global-places-recommendation.neo4j :as n4j]
-	    [global-places-recommendation.selenium.selenium-test :as sl]
 	    [factual.api :as fact]))
 
 (fact/factual! "dLdrD1DFyqEErPNYCWL6fUDfjOYRX91QGwidQHan" "4xzqiH0N87cgT1iMxG9MDdc1txGqkTovYVK1jxq4")
-
-(defn selenium-test
-  "Selenium"
-  []
-  (sl/test-suite))
 
 (defonce server (ref nil))
 
@@ -53,6 +47,4 @@
 (println "Type (start-server) to launch server.")
 (println "Type (restart-server) to restart server.")
 (println "Type (stop-server) to stop server.")
-(println)
-(println "Type (selenium-test) to test functionalities.")
 (println)

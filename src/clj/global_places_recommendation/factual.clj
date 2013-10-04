@@ -49,3 +49,13 @@
 							    "pets" {:$eq pets}
 							    "internet" {:$eq wifi}
 							    "spa_services" {:$eq spa}} :limit 5})))
+								
+(defn suggest-hotels
+  ""
+  [lat
+   lon]
+  (fact/fetch {:table
+	       :hotels-us
+	       :geo {:$circle {:$center [lat lon]
+			       :$meters 4500}}
+	       :limit 5}))

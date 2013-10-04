@@ -3,7 +3,6 @@
   (:require [global-places-recommendation.neo4j :as n4j]
 	    [global-places-recommendation.html-generator :as hg]
 	    [net.cgrand.enlive-html :as en]
-	    [global-places-recommendation.utils :refer [nodes-data-to-map]]
         [global-places-recommendation.factual :as gpr-fact]))
 
 (en/deftemplate login

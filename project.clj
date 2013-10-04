@@ -44,8 +44,7 @@
 		{:dev-login
 		 {;; CLJS source code path
 		  :source-paths ["src/brepl"
-				 "src/cljs/global_places_recommendation/login"
-				 "src/cljs/global_places_recommendation/utils"]
+				 "src/cljs/global_places_recommendation/login"]
 
 		  ;; Google Closure (CLS) options configuration
 		  :compiler {;; CLS generated JS script filename
@@ -58,8 +57,7 @@
 			     :pretty-print true}}
 		 :prod-login
 		 {;; CLJS source code path
-		  :source-paths ["src/cljs/global_places_recommendation/login"
-				 "src/cljs/global_places_recommendation/utils"]
+		  :source-paths ["src/cljs/global_places_recommendation/login"]
 
 		  ;; Google Closure (CLS) options configuration
 		  :compiler {;; CLS generated JS script filename
@@ -70,8 +68,7 @@
 		 :dev-restaurants
 		 {;; CLJS source code path
 		  :source-paths ["src/brepl"
-				 "src/cljs/global_places_recommendation/restaurants"
-				 "src/cljs/global_places_recommendation/utils"]
+				 "src/cljs/global_places_recommendation/restaurants"]
 
 		  ;; Google Closure (CLS) options configuration
 		  :compiler {;; CLS generated JS script filename
@@ -84,8 +81,7 @@
 			     :pretty-print true}}
 		 :prod-restaurants
 		 {;; CLJS source code path
-		  :source-paths ["src/cljs/global_places_recommendation/restaurants"
-				 "src/cljs/global_places_recommendation/utils"]
+		  :source-paths ["src/cljs/global_places_recommendation/restaurants"]
 
 		  ;; Google Closure (CLS) options configuration
 		  :compiler {;; CLS generated JS script filename

@@ -29345,6 +29345,78 @@ goog.require("cljs.core");
 goog.require("domina.css");
 goog.require("domina.events");
 goog.require("domina");
+global_places_recommendation.restaurants.jsrestaurants.suggest_click_listener = function suggest_click_listener() {
+  var sel_nodes = cljs.core.map.call(null, domina.attrs, domina.nodes.call(null, domina.css.sel.call(null, "input[id*='suggest']")));
+  var seq__3697 = cljs.core.seq.call(null, sel_nodes);
+  var chunk__3698 = null;
+  var count__3699 = 0;
+  var i__3700 = 0;
+  while(true) {
+    if(i__3700 < count__3699) {
+      var sel_node = cljs.core._nth.call(null, chunk__3698, i__3700);
+      domina.events.listen_BANG_.call(null, domina.by_id.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, sel_node)), "\ufdd0:click", function(seq__3697, chunk__3698, count__3699, i__3700, sel_node) {
+        return function() {
+          var selector = domina.by_class.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, sel_node));
+          if(cljs.core._EQ_.call(null, cljs.core.re_find.call(null, /none/, domina.style.call(null, selector, "display")), "none")) {
+            return domina.set_style_BANG_.call(null, selector, "display", "block")
+          }else {
+            return domina.set_style_BANG_.call(null, selector, "display", "none")
+          }
+        }
+      }(seq__3697, chunk__3698, count__3699, i__3700, sel_node));
+      var G__3701 = seq__3697;
+      var G__3702 = chunk__3698;
+      var G__3703 = count__3699;
+      var G__3704 = i__3700 + 1;
+      seq__3697 = G__3701;
+      chunk__3698 = G__3702;
+      count__3699 = G__3703;
+      i__3700 = G__3704;
+      continue
+    }else {
+      var temp__4092__auto__ = cljs.core.seq.call(null, seq__3697);
+      if(temp__4092__auto__) {
+        var seq__3697__$1 = temp__4092__auto__;
+        if(cljs.core.chunked_seq_QMARK_.call(null, seq__3697__$1)) {
+          var c__3073__auto__ = cljs.core.chunk_first.call(null, seq__3697__$1);
+          var G__3705 = cljs.core.chunk_rest.call(null, seq__3697__$1);
+          var G__3706 = c__3073__auto__;
+          var G__3707 = cljs.core.count.call(null, c__3073__auto__);
+          var G__3708 = 0;
+          seq__3697 = G__3705;
+          chunk__3698 = G__3706;
+          count__3699 = G__3707;
+          i__3700 = G__3708;
+          continue
+        }else {
+          var sel_node = cljs.core.first.call(null, seq__3697__$1);
+          domina.events.listen_BANG_.call(null, domina.by_id.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, sel_node)), "\ufdd0:click", function(seq__3697, chunk__3698, count__3699, i__3700, sel_node, seq__3697__$1, temp__4092__auto__) {
+            return function() {
+              var selector = domina.by_class.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, sel_node));
+              if(cljs.core._EQ_.call(null, cljs.core.re_find.call(null, /none/, domina.style.call(null, selector, "display")), "none")) {
+                return domina.set_style_BANG_.call(null, selector, "display", "block")
+              }else {
+                return domina.set_style_BANG_.call(null, selector, "display", "none")
+              }
+            }
+          }(seq__3697, chunk__3698, count__3699, i__3700, sel_node, seq__3697__$1, temp__4092__auto__));
+          var G__3709 = cljs.core.next.call(null, seq__3697__$1);
+          var G__3710 = null;
+          var G__3711 = 0;
+          var G__3712 = 0;
+          seq__3697 = G__3709;
+          chunk__3698 = G__3710;
+          count__3699 = G__3711;
+          i__3700 = G__3712;
+          continue
+        }
+      }else {
+        return null
+      }
+    }
+    break
+  }
+};
 global_places_recommendation.restaurants.jsrestaurants.onready = function onready(content) {
   if(function() {
     var and__3941__auto__ = cljs.core._EQ_.call(null, content["currentTarget"]["readyState"], 4);
@@ -29355,7 +29427,8 @@ global_places_recommendation.restaurants.jsrestaurants.onready = function onread
     }
   }()) {
     if(!cljs.core._EQ_.call(null, content["currentTarget"]["responseText"], "")) {
-      return domina.swap_content_BANG_.call(null, domina.by_class.call(null, "results"), content["currentTarget"]["responseText"])
+      domina.swap_content_BANG_.call(null, domina.by_class.call(null, "results"), content["currentTarget"]["responseText"]);
+      return global_places_recommendation.restaurants.jsrestaurants.suggest_click_listener.call(null)
     }else {
       return null
     }
