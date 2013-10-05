@@ -99,9 +99,9 @@
 		      :click
 		      (fn [] (hide-register-pop-up)))
 	(evts/listen! (dom/by-id "register-btn")
-		      :click
-		      fn [] (do (hide-register-pop-up)
-				 ( (if (validate-regiser-form)
-            (save-user))
+        :click
+        (fn [] (do (hide-register-pop-up)
+     (if (validate-regiser-form)
+         (save-user))
          )))
 )))
